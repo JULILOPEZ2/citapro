@@ -1,0 +1,70 @@
+<ion-content class="cita-content">
+
+  <div class="page-container">
+
+    <div class="top-bar">
+      <ion-button fill="clear" routerLink="/menu">←</ion-button>
+      <h1>Agendar cita</h1>
+    </div>
+
+    <div class="form-card">
+
+      <ion-item>
+        <ion-input
+          label="Nombre del cliente"
+          labelPlacement="stacked"
+          placeholder="Ej: María González">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select
+          label="Servicio"
+          labelPlacement="stacked"
+          placeholder="Seleccionar servicio">
+          <ion-select-option value="corte">Corte de cabello</ion-select-option>
+          <ion-select-option value="peinado">Corte y peinado</ion-select-option>
+          <ion-select-option value="bano">Baño completo</ion-select-option>
+          <ion-select-option value="bano-corte">Baño y corte</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          type="date"
+          label="Fecha"
+          labelPlacement="stacked">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select
+          label="Hora"
+          labelPlacement="stacked"
+          placeholder="Seleccionar hora">
+          <ion-select-option value="09:00">09:00 AM</ion-select-option>
+          <ion-select-option value="10:00">10:00 AM</ion-select-option>
+          <ion-select-option value="14:00">02:00 PM</ion-select-option>
+          <ion-select-option value="15:00">03:00 PM</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea
+          label="Notas"
+          labelPlacement="stacked"
+          placeholder="Información adicional sobre la cita...">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" class="confirm-button" (click)="confirmarCita()">
+        Confirmar cita
+      </ion-button>
+
+      <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+
+    </div>
+
+  </div>
+
+</ion-content>
