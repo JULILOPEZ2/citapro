@@ -1,10 +1,26 @@
 <ion-content class="cita-content">
-
   <div class="page-container">
 
     <div class="top-bar">
-      <ion-button fill="clear" routerLink="/menu">←</ion-button>
-      <h1>Agendar cita</h1>
+      <ion-button fill="clear" routerLink="/servicios">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+
+      <div>
+        <h1>Agendar cita</h1>
+        <p>Completa los datos para confirmar tu cita</p>
+      </div>
+    </div>
+
+    <div class="selected-service" *ngIf="servicioSeleccionado">
+      <div class="icono">
+        <ion-icon [name]="servicioSeleccionado.icono"></ion-icon>
+      </div>
+
+      <div>
+        <h2>{{ servicioSeleccionado.nombre }}</h2>
+        <p>{{ servicioSeleccionado.precio }} · {{ servicioSeleccionado.duracion }}</p>
+      </div>
     </div>
 
     <div class="form-card">
@@ -13,27 +29,27 @@
         <ion-input
           label="Nombre del cliente"
           labelPlacement="stacked"
-          placeholder="Ej: María González">
+          placeholder="Ej: María González"
+          [(ngModel)]="cliente">
         </ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-select
-          label="Servicio"
+        <ion-input
+          type="tel"
+          label="Teléfono"
           labelPlacement="stacked"
-          placeholder="Seleccionar servicio">
-          <ion-select-option value="corte">Corte de cabello</ion-select-option>
-          <ion-select-option value="peinado">Corte y peinado</ion-select-option>
-          <ion-select-option value="bano">Baño completo</ion-select-option>
-          <ion-select-option value="bano-corte">Baño y corte</ion-select-option>
-        </ion-select>
+          placeholder="Ej: 3001234567"
+          [(ngModel)]="telefono">
+        </ion-input>
       </ion-item>
 
       <ion-item>
         <ion-input
           type="date"
           label="Fecha"
-          labelPlacement="stacked">
+          labelPlacement="stacked"
+          [(ngModel)]="fecha">
         </ion-input>
       </ion-item>
 
@@ -41,30 +57,38 @@
         <ion-select
           label="Hora"
           labelPlacement="stacked"
-          placeholder="Seleccionar hora">
-          <ion-select-option value="09:00">09:00 AM</ion-select-option>
-          <ion-select-option value="10:00">10:00 AM</ion-select-option>
-          <ion-select-option value="14:00">02:00 PM</ion-select-option>
-          <ion-select-option value="15:00">03:00 PM</ion-select-option>
+          placeholder="Seleccionar hora"
+          [(ngModel)]="hora">
+          <ion-select-option value="09:00 AM">09:00 AM</ion-select-option>
+          <ion-select-option value="10:00 AM">10:00 AM</ion-select-option>
+          <ion-select-option value="02:00 PM">02:00 PM</ion-select-option>
+          <ion-select-option value="03:00 PM">03:00 PM</ion-select-option>
+          <ion-select-option value="04:00 PM">04:00 PM</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-textarea
-          label="Notas"
+          label="Observaciones"
           labelPlacement="stacked"
-          placeholder="Información adicional sobre la cita...">
+          placeholder="Información adicional..."
+          [(ngModel)]="observaciones">
         </ion-textarea>
       </ion-item>
+
+      <p class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </p>
+
+      <p class="success-message" *ngIf="successMessage">
+        {{ successMessage }}
+      </p>
 
       <ion-button expand="block" class="confirm-button" (click)="confirmarCita()">
         Confirmar cita
       </ion-button>
 
-      <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
-
     </div>
 
   </div>
-
 </ion-content>

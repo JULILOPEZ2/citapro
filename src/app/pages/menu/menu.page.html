@@ -3,31 +3,69 @@
   <div class="container">
 
     <div class="header">
-      <div class="logo">📅</div>
-      <h1>CitaPro</h1>
-      <p>Bienvenido</p>
+      <div>
+        <p class="welcome">Hola,</p>
+        <h1>{{ nombreUsuario }}</h1>
+      </div>
+
+      <div class="avatar">
+        <ion-icon name="person-outline"></ion-icon>
+      </div>
     </div>
 
-    <div class="card cita-card">
-      <h2>Próxima cita</h2>
-      <p>Baño para mascotas</p>
-      <small>15 Junio - 10:00 AM</small>
+    <div class="next-card">
+      <div>
+        <p>Próxima cita</p>
+        <h2>{{ proximaCita.servicio }}</h2>
+        <span>{{ proximaCita.fecha }} - {{ proximaCita.hora }}</span>
+      </div>
+      <ion-icon name="calendar-outline"></ion-icon>
     </div>
 
-    <ion-button expand="block" routerLink="/servicios">
-      Servicios
-    </ion-button>
+    <div class="stats">
+      <div class="stat-card">
+        <h3>{{ totalServicios }}</h3>
+        <p>Servicios</p>
+      </div>
 
-    <ion-button expand="block" routerLink="/agendar-cita">
-      Agendar cita
-    </ion-button>
+      <div class="stat-card">
+        <h3>{{ totalCitas }}</h3>
+        <p>Citas</p>
+      </div>
+    </div>
 
-    <ion-button expand="block" fill="outline">
-      Historial
-    </ion-button>
+    <h2 class="section-title">Accesos rápidos</h2>
 
-    <ion-button expand="block" fill="outline">
-      Perfil
+    <div class="actions-grid">
+
+      <div class="action-card" routerLink="/servicios">
+        <ion-icon name="cut-outline"></ion-icon>
+        <h3>Servicios</h3>
+        <p>Ver catálogo</p>
+      </div>
+
+      <div class="action-card" routerLink="/agendar-cita">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        <h3>Agendar</h3>
+        <p>Nueva cita</p>
+      </div>
+
+      <div class="action-card">
+        <ion-icon name="time-outline"></ion-icon>
+        <h3>Historial</h3>
+        <p>Ver citas</p>
+      </div>
+
+      <div class="action-card">
+        <ion-icon name="settings-outline"></ion-icon>
+        <h3>Perfil</h3>
+        <p>Mis datos</p>
+      </div>
+
+    </div>
+
+    <ion-button expand="block" fill="outline" class="logout-button" (click)="cerrarSesion()">
+      Cerrar sesión
     </ion-button>
 
   </div>

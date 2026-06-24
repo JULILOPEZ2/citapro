@@ -4,45 +4,55 @@
 
     <div class="logo-section">
       <div class="logo-box">
-        📅
+        <ion-icon name="calendar-outline"></ion-icon>
       </div>
 
       <h1>CitaPro</h1>
-
-      <p>Gestiona tus citas de manera profesional</p>
+      <p>Gestiona citas, clientes y servicios de forma sencilla.</p>
     </div>
 
-    <div class="form-section">
+    <div class="login-card">
+
+      <h2>Iniciar sesión</h2>
+      <p class="subtitle">Ingresa para continuar</p>
 
       <ion-item>
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
         <ion-input
-          label="Correo o usuario"
+          type="email"
+          label="Correo electrónico"
           labelPlacement="stacked"
-          placeholder="correo@ejemplo.com">
+          placeholder="correo@ejemplo.com"
+          [(ngModel)]="email">
         </ion-input>
       </ion-item>
 
       <ion-item>
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
         <ion-input
           type="password"
           label="Contraseña"
           labelPlacement="stacked"
-          placeholder="********">
+          placeholder="Mínimo 6 caracteres"
+          [(ngModel)]="password">
         </ion-input>
       </ion-item>
+
+      <p class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </p>
 
       <ion-button
         expand="block"
         class="login-button"
-        routerLink="/menu">
+        (click)="login()">
         Iniciar sesión
       </ion-button>
 
-      <ion-button
-        expand="block"
-        fill="outline">
-        Registrarse
-      </ion-button>
+      <div class="demo-box">
+        <p><strong>Usuario demo:</strong> admin@citapro.com</p>
+        <p><strong>Clave:</strong> 123456</p>
+      </div>
 
     </div>
 

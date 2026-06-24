@@ -1,0 +1,35 @@
+<ion-content class="menu-content">
+
+  <div class="container">
+
+    <div class="header">
+      <div class="logo">📅</div>
+      <h1>CitaPro</h1>
+      <p>Bienvenido</p>
+    </div>
+
+    <div class="card cita-card">
+      <h2>Próxima cita</h2>
+      <p>Baño para mascotas</p>
+      <small>15 Junio - 10:00 AM</small>
+    </div>
+
+    <ion-button expand="block" routerLink="/servicios">
+      Servicios
+    </ion-button>
+
+    <ion-button expand="block" routerLink="/agendar-cita">
+      Agendar cita
+    </ion-button>
+
+    <ion-button expand="block" fill="outline">
+      Historial
+    </ion-button>
+
+    <ion-button expand="block" fill="outline">
+      Perfil
+    </ion-button>
+
+  </div>
+
+</ion-content>

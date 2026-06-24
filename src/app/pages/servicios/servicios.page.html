@@ -1,36 +1,50 @@
 <ion-content class="servicios-content">
-
   <div class="page-container">
 
     <div class="top-bar">
-      <ion-button fill="clear" routerLink="/menu">←</ion-button>
-      <h1>Servicios</h1>
-      <ion-button size="small">+ Agregar</ion-button>
+      <ion-button fill="clear" routerLink="/menu">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+
+      <div>
+        <h1>Servicios</h1>
+        <p>Selecciona el servicio que deseas agendar</p>
+      </div>
     </div>
 
     <ion-searchbar
-      placeholder="Buscar servicios..."
-      class="search">
+      placeholder="Buscar servicio..."
+      [(ngModel)]="textoBusqueda"
+      (ionInput)="filtrarServicios()">
     </ion-searchbar>
 
-    <p class="contador">4 servicios disponibles</p>
+    <p class="contador">{{ serviciosFiltrados.length }} servicios disponibles</p>
 
-    <div class="servicio-card" *ngFor="let servicio of servicios">
-      <div class="icono">✂️</div>
+    <div class="servicio-card" *ngFor="let servicio of serviciosFiltrados">
 
-      <div class="info">
-        <h2>{{ servicio.nombre }}</h2>
-        <span>{{ servicio.categoria }}</span>
-        <p>{{ servicio.precio }}</p>
+      <div class="icono">
+        <ion-icon [name]="servicio.icono"></ion-icon>
       </div>
 
-      <ion-button
-        fill="clear"
-        routerLink="/agendar-cita">
-        Seleccionar
-      </ion-button>
+      <div class="info">
+        <div class="info-header">
+          <h2>{{ servicio.nombre }}</h2>
+          <span>{{ servicio.categoria }}</span>
+        </div>
+
+        <p>{{ servicio.descripcion }}</p>
+
+        <div class="detalle">
+          <strong>{{ servicio.precio }}</strong>
+          <small>{{ servicio.duracion }}</small>
+        </div>
+
+        <ion-button expand="block" size="small" (click)="seleccionarServicio(servicio)">
+          Seleccionar
+        </ion-button>
+      </div>
+
     </div>
 
   </div>
-
 </ion-content>
